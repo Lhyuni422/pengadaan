@@ -4,16 +4,16 @@
         <div class="row">
             <div class="col">
                 <h4 class="h5 align-middle m-0 font-weight-bold text-primary">
-                    Riwayat Data Barang Masuk
+                    Riwayat Permintaan Barang
                 </h4>
             </div>
             <div class="col-auto">
-                <a href="<?= base_url('pengajuan/add') ?>" class="btn btn-sm btn-primary btn-icon-split">
+                <a href="<?= base_url('permintaan_temp/add') ?>" class="btn btn-sm btn-primary btn-icon-split">
                     <span class="icon">
                         <i class="fa fa-plus"></i>
                     </span>
                     <span class="text">
-                        Input Pengajuan Barang
+                        Input Permintaan Barang
                     </span>
                 </a>
             </div>
@@ -24,32 +24,34 @@
             <thead>
                 <tr>
                     <th>No. </th>
-                    <th>No Pengajuan</th>
-                    <th>Tanggal Pengajuan</th>
-                    <th>Unit</th>
+                    <th>No Permintaan</th>
+                    <th>Tgl Permintaan</th>                    
                     <th>Nama Barang</th>
-                    <th>Jumlah Masuk</th>
-                    <th>User</th>
-                    <th>Hapus</th>
+                    <th>Jumlah</th>
+                    <th>Nama</th>   
+                    <th>Unit</th>                  
+                    <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
                 $no = 1;
-                if ($barangmasuk) :
-                    foreach ($barangmasuk as $bm) :
+                if ($permintaan_temp) :
+                    foreach ($permintaan_temp as $rt) :
                         ?>
                         <tr>
                             <td><?= $no++; ?></td>
-                            <td><?= $bm['id_barang_masuk']; ?></td>
-                            <td><?= $bm['tanggal_masuk']; ?></td>
-                            <td><?= $bm['nama_supplier']; ?></td>
-                            <td><?= $bm['nama_barang']; ?></td>
-                            <td><?= $bm['jumlah_masuk'] . ' ' . $bm['nama_satuan']; ?></td>
-                            <td><?= $bm['nama']; ?></td>
+                            <td><?= $rt['id_req_temp']; ?></td>
+                            <td><?= $rt['tgl_req']; ?></td>
+                            <td><?= $rt['nama_barang']; ?></td>
+                            <td><?= $rt['jumlah'] . ' ' . $rt['nama_satuan']; ?></td>                   
+                            <td><?= $rt['nama']; ?></td>
+                            <td><?= $rt['unit']; ?></td>
                             <td>
-                                <a onclick="return confirm('Yakin ingin hapus?')" href="<?= base_url('pengajuan/delete/') . $bm['id_barang_masuk'] ?>" class="btn btn-danger btn-circle btn-sm"><i class="fa fa-trash"></i></a>
-                            </td>
+                                <a href="<?= base_url('permintaan_temp/detail_data')  ?>" class="btn btn-primary btn-circle btn-sm">
+                                    <i class="fa fa-info"></i>
+                                </a>
+                             </td>
                         </tr>
                     <?php endforeach; ?>
                 <?php else : ?>

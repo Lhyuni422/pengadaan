@@ -75,6 +75,13 @@
                         <?= form_error('role', '<span class="text-danger small">', '</span>'); ?>
                     </div>
                 </div>
+                <div class="row form-group">
+                    <label class="col-md-4 text-md-right" for="no_telp">Unit</label>
+                    <div class="col-md-6">
+                        <input value="<?= set_value('unit', $user['unit']); ?>" type="text" id="unit" name="unit" class="form-control" placeholder="Unit">
+                        <?= form_error('unit', '<span class="text-danger small">', '</span>'); ?>
+                    </div>
+                </div>
                 <br>
                 <div class="row form-group justify-content-end">
                     <div class="col-md-8">

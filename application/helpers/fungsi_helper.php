@@ -33,6 +33,32 @@ function is_gudang()
     if ($role != 'gudang') {
         $status = false;
     }
+    return $status;
+}
+
+    function is_pimpinan()
+{
+    $ci = get_instance();
+    $role = $ci->session->userdata('login_session')['role'];
+
+    $status = true;
+
+    if ($role != 'pimpinan') {
+        $status = false;
+    }
+    return $status;
+}
+
+    function is_unit()
+{
+    $ci = get_instance();
+    $role = $ci->session->userdata('login_session')['role'];
+
+    $status = true;
+
+    if ($role != 'unit') {
+        $status = false;
+    }
 
     return $status;
 }

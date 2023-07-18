@@ -27,6 +27,7 @@ class User extends CI_Controller
         $this->form_validation->set_rules('nama', 'Nama', 'required|trim');
         $this->form_validation->set_rules('no_telp', 'Nomor Telepon', 'required|trim');
         $this->form_validation->set_rules('role', 'Role', 'required|trim');
+        $this->form_validation->set_rules('unit', 'Unit', 'required|trim');
 
         if ($mode == 'add') {
             $this->form_validation->set_rules('username', 'Username', 'required|trim|is_unique[user.username]|alpha_numeric');
@@ -61,6 +62,7 @@ class User extends CI_Controller
                 'email'         => $input['email'],
                 'no_telp'       => $input['no_telp'],
                 'role'          => $input['role'],
+                'unit'          => $input['unit'],
                 'password'      => password_hash($input['password'], PASSWORD_DEFAULT),
                 'created_at'    => time(),
                 'foto'          => 'user.png'
@@ -92,7 +94,8 @@ class User extends CI_Controller
                 'username'      => $input['username'],
                 'email'         => $input['email'],
                 'no_telp'       => $input['no_telp'],
-                'role'          => $input['role']
+                'role'          => $input['role'],
+                'unit'          => $input['unit']
             ];
 
             if ($this->admin->update('user', 'id_user', $id, $input_data)) {

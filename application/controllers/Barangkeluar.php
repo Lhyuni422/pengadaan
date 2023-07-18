@@ -30,7 +30,7 @@ class Barangkeluar extends CI_Controller
 
         $this->form_validation->set_rules(
             'jumlah_keluar',
-            'Jumlah Keluar',
+            'Jumlah_Keluar',
             "required|trim|numeric|greater_than[0]|less_than[{$stok_valid}]",
             [
                 'less_than' => "Jumlah Keluar tidak boleh lebih dari {$stok}"

@@ -8,11 +8,11 @@
                 </h4>
             </div>
             <div class="col-auto">
-                <a href="<?= base_url('user/add') ?>" class="btn btn-sm btn-primary btn-icon-split">
+                <a href="<?= base_url('user/add') ?>" class="btn btn-sm btn-icon-split btn-primary">
                     <span class="icon">
                         <i class="fa fa-user-plus"></i>
                     </span>
-                    <span class="text">
+                    <span class="text text-white">
                         Tambah User
                     </span>
                 </a>
@@ -29,7 +29,8 @@
                     <th>Username</th>
                     <th>Email</th>
                     <th>No. telp</th>
-                    <th>Role</th>                   
+                    <th>Role</th>
+                    <th>Unit</th>                    
                     <th>Aksi</th>
                 </tr>
             </thead>
@@ -48,7 +49,8 @@
                             <td><?= $user['username']; ?></td>
                             <td><?= $user['email']; ?></td>
                             <td><?= $user['no_telp']; ?></td>
-                            <td><?= $user['role']; ?></td>                            
+                            <td><?= $user['role']; ?></td>
+                            <td><?= $user['unit']; ?></td>                             
                             <td>
                                 <a href="<?= base_url('user/toggle/') . $user['id_user'] ?>" class="btn btn-circle btn-sm <?= $user['is_active'] ? 'btn-secondary' : 'btn-success' ?>" title="<?= $user['is_active'] ? 'Nonaktifkan User' : 'Aktifkan User' ?>"><i class="fa fa-fw fa-power-off"></i></a>
                                 <a href="<?= base_url('user/edit/') . $user['id_user'] ?>" class="btn btn-circle btn-sm btn-warning"><i class="fa fa-fw fa-edit"></i></a>

@@ -42,12 +42,16 @@
 		<ul class="navbar-nav bg-white sidebar sidebar-light accordion shadow-sm" id="accordionSidebar">
 
 			<!-- Sidebar - Brand -->
-			<a class="sidebar-brand d-flex text-white align-items-center bg-primary justify-content-center" href="">
+			<a class="sidebar-brand d-flex text-white align-items-center bg-white shadow-sm justify-content-center" href="">
 				<div class="sidebar-brand-icon">
-					<i class="fas fa-university"></i>
-				</div>
-				<div class="sidebar-brand-text mx-3">Pengadaan Perlengkapan</div>
+				<img src="https://rsharapankeluarga.com/wp-content/uploads/2019/11/LOGO-RSU-Harkel.png" width="40" height="40" class="d-inline-block align-top" alt="">
+   				</div>
+				<div class="sidebar-brand-text mx-3 text-primary">Pengadaan Perlengkapan</div>
 			</a>
+
+						
+			<!-- Tampilan ADMIN -->
+		<?php if (is_admin()) : ?>
 
 			<!-- Nav Item - Dashboard -->
 			<li class="nav-item">
@@ -56,26 +60,10 @@
 					<span>Dashboard</span>
 				</a>
 			</li>
-
-			<!-- Divider -->
+		
+				<!-- Divider -->
 			<hr class="sidebar-divider">
 
-			<?php if (is_admin()) : ?>
-			<!-- Heading -->
-			<div class="sidebar-heading">
-				Data Master
-			</div>
-
-			<!-- Nav Item - Dashboard -->
-			<li class="nav-item">
-				<a class="nav-link pb-0" href="<?= base_url('supplier'); ?>">
-					<i class="fas fa-fw fa-users"></i>
-					<span>Supplier</span>
-				</a>
-			</li>
-			<?php endif; ?>
-
-			<?php if (is_admin()) : ?>
 			<!-- Heading -->
 			<div class="sidebar-heading">
 				Data Master
@@ -104,26 +92,8 @@
 					</div>
 				</div>
 			</li>
-			<?php endif; ?>
-
-			<?php if (is_admin()) : ?>
-			<!-- Divider -->
-			<hr class="sidebar-divider">
-
-			<!-- Heading -->
-			<div class="sidebar-heading">
-				Transaksi
-			</div>
-
-			<!-- Nav Item - Dashboard -->
-			<li class="nav-item">
-				<a class="nav-link pb-0" href="<?= base_url('barangmasuk'); ?>">
-					<i class="fas fa-fw fa-download"></i>
-					<span>Pengajuan Pembelian</span>
-				</a>
-			</li>
-			
-			<!-- Divider -->
+								
+				<!-- Divider -->
 			<hr class="sidebar-divider">
 
 			<!-- Heading -->
@@ -146,10 +116,100 @@
 					<span>Barang Keluar</span>
 				</a>
 			</li>
-			<?php endif; ?>
+	
+			<!-- Nav Item - Dashboard -->
+			<li class="nav-item">
+				<a class="nav-link pb-0" href="<?= base_url('pengajuan'); ?>">
+					<i class="fas fa-fw fa-download"></i>
+					<span>Pengajuan Pembelian</span>
+				</a>
+			</li>
 
-			
-			<!-- Divider -->
+			<!-- Nav Item - Dashboard -->
+			<li class="nav-item">
+				<a class="nav-link" href="<?= base_url('permintaan'); ?>">
+					<i class="fas fa-fw fa-download"></i>
+					<span>Request Barang</span>
+				</a>
+			</li>
+
+				<!-- Divider -->
+			<hr class="sidebar-divider">
+
+			<!-- Heading -->
+			<div class="sidebar-heading">
+				Report
+			</div>
+
+			<li class="nav-item">
+				<a class="nav-link" href="<?= base_url('laporan'); ?>">
+					<i class="fas fa-fw fa-print"></i>
+					<span>Cetak Laporan</span>
+				</a>
+			</li>
+
+				<!-- Divider -->
+			<hr class="sidebar-divider">
+
+			<!-- Heading -->
+			<div class="sidebar-heading">
+				Settings
+			</div>
+
+			<!-- Nav Item -->
+			<li class="nav-item">
+				<a class="nav-link" href="<?= base_url('user'); ?>">
+					<i class="fas fa-fw fa-user-plus"></i>
+					<span>User Management</span>
+				</a>
+			</li>
+		<?php endif; ?>
+
+
+			<!-- Tampilan GUDANG -->
+		<?php if (is_gudang()) : ?>
+
+			<!-- Nav Item - Dashboard -->
+			<li class="nav-item">
+				<a class="nav-link" href="<?= base_url('dashboard'); ?>">
+					<i class="fas fa-fw fa-tachometer-alt"></i>
+					<span>Dashboard</span>
+				</a>
+			</li>
+
+				<!-- Divider -->
+			<hr class="sidebar-divider">
+
+			<!-- Heading -->
+			<div class="sidebar-heading">
+				Data Master
+			</div>
+
+			<!-- Nav Item - Dashboard -->
+			<li class="nav-item">
+				<a class="nav-link pb-0" href="<?= base_url('supplier'); ?>">
+					<i class="fas fa-fw fa-users"></i>
+					<span>Supplier</span>
+				</a>
+			</li>
+		
+			<!-- Nav Item - Pages Collapse Menu -->
+			<li class="nav-item">
+				<a class="nav-link collapsed " href="#" data-toggle="collapse" data-target="#collapseMaster" aria-expanded="true" aria-controls="collapseMaster">
+					<i class="fas fa-fw fa-folder"></i>
+					<span>Barang</span>
+				</a>
+				<div id="collapseMaster" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+					<div class="bg-light py-2 collapse-inner rounded">
+						<h6 class="collapse-header">Master Barang:</h6>
+						<a class="collapse-item" href="<?= base_url('satuan'); ?>">Satuan Barang</a>
+						<a class="collapse-item" href="<?= base_url('jenis'); ?>">Jenis Barang</a>
+						<a class="collapse-item" href="<?= base_url('barang'); ?>">Data Barang</a>
+					</div>
+				</div>
+			</li>
+								
+				<!-- Divider -->
 			<hr class="sidebar-divider">
 
 			<!-- Heading -->
@@ -159,12 +219,115 @@
 
 			<!-- Nav Item - Dashboard -->
 			<li class="nav-item">
-				<a class="nav-link" href="<?= base_url('req_barang'); ?>">
+				<a class="nav-link pb-0" href="<?= base_url('barangmasuk'); ?>">
+					<i class="fas fa-fw fa-download"></i>
+					<span>Barang Masuk</span>
+				</a>
+			</li>
+
+			<!-- Nav Item - Dashboard -->
+			<li class="nav-item">
+				<a class="nav-link pb-0" href="<?= base_url('barangkeluar'); ?>">
+					<i class="fas fa-fw fa-upload"></i>
+					<span>Barang Keluar</span>
+				</a>
+			</li>
+	
+			<!-- Nav Item - Dashboard -->
+			<li class="nav-item">
+				<a class="nav-link pb-0" href="<?= base_url('pengajuan'); ?>">
+					<i class="fas fa-fw fa-download"></i>
+					<span>Pengajuan Pembelian</span>
+				</a>
+			</li>
+
+			<!-- Nav Item - Dashboard -->
+			<li class="nav-item">
+				<a class="nav-link" href="<?= base_url('permintaan'); ?>">
 					<i class="fas fa-fw fa-download"></i>
 					<span>Request Barang</span>
 				</a>
 			</li>
-			
+
+				<!-- Divider -->
+			<hr class="sidebar-divider">
+
+			<!-- Heading -->
+			<div class="sidebar-heading">
+				Report
+			</div>
+
+			<li class="nav-item">
+				<a class="nav-link" href="<?= base_url('laporan'); ?>">
+					<i class="fas fa-fw fa-print"></i>
+					<span>Cetak Laporan</span>
+				</a>
+			</li>
+
+				<!-- Divider -->
+			<hr class="sidebar-divider">
+
+			<!-- Heading -->
+			<div class="sidebar-heading">
+				Settings
+			</div>
+
+			<!-- Nav Item -->
+			<li class="nav-item">
+				<a class="nav-link" href="<?= base_url('user'); ?>">
+					<i class="fas fa-fw fa-user-plus"></i>
+					<span>User Management</span>
+				</a>
+			</li>
+		<?php endif; ?>
+
+	
+			<!-- Tampilan UNIT -->
+		<?php if (is_unit()) : ?>
+				<!-- Divider -->
+			<hr class="sidebar-divider">
+
+			<!-- Heading -->
+			<div class="sidebar-heading">
+				Data Master
+			</div>
+
+			<!-- Nav Item - Dashboard -->
+			<li class="nav-item">
+				<a class="nav-link" href="<?= base_url('barang'); ?>">
+					<i class="fas fa-fw fa-users"></i>
+					<span>Data Barang</span>
+				</a>
+			</li>
+
+				<!-- Divider -->
+			<hr class="sidebar-divider">
+
+			<!-- Heading -->
+			<div class="sidebar-heading">
+				Transaksi
+			</div>
+
+			<!-- Nav Item - Dashboard -->
+			<li class="nav-item">
+				<a class="nav-link" href="<?= base_url('permintaan_temp'); ?>">
+					<i class="fas fa-fw fa-download"></i>
+					<span>Request Barang</span>
+				</a>
+			</li>
+		<?php endif; ?>	
+				
+
+			<!-- Tampilan PIMPINAN -->
+		<?php if (is_pimpinan()) : ?>
+
+			<!-- Nav Item - Dashboard -->
+			<li class="nav-item">
+				<a class="nav-link" href="<?= base_url('dashboard'); ?>">
+					<i class="fas fa-fw fa-tachometer-alt"></i>
+					<span>Dashboard</span>
+				</a>
+			</li>
 
 			<!-- Divider -->
 			<hr class="sidebar-divider">
@@ -180,24 +343,8 @@
 					<span>Cetak Laporan</span>
 				</a>
 			</li>
+		<?php endif; ?>	
 
-			<?php if (is_gudang()) : ?>
-				<!-- Divider -->
-				<hr class="sidebar-divider">
-
-				<!-- Heading -->
-				<div class="sidebar-heading">
-					Settings
-				</div>
-
-				<!-- Nav Item -->
-				<li class="nav-item">
-					<a class="nav-link" href="<?= base_url('user'); ?>">
-						<i class="fas fa-fw fa-user-plus"></i>
-						<span>User Management</span>
-					</a>
-				</li>
-			<?php endif; ?>
 
 			<!-- Divider -->
 			<hr class="sidebar-divider d-none d-md-block">
@@ -266,7 +413,7 @@
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
-					<h1 class="h3 mb-4 text-gray-800"><?= $title; ?></h1>
+					
 
 					<?= $contents; ?>
 
@@ -276,8 +423,11 @@
 			</div>
 			<!-- End of Main Content -->
 
+			<?php if (is_unit()) :?>
 			<!-- Footer -->
 			<footer class="sticky-footer bg-light">
+			<marquee hspace="40" width="full-width">Setelah permintaan dikonfirmasi oleh Admin/Petugas Gudang, Unit yang bersangkutan harap segera langsung mengambil barang ke bagian Gudang.</marquee>
+  			<br></br>
 				<div class="container my-auto">
 					<div class="copyright text-center my-auto">
 						<span>Copyright &copy; Aplikasi Pengadaan Barang 2023 &bull; by <?= anchor('https://www.linkedin.com/in/tri-w-71aa9388/', 'Tri.Wahyuni'); ?>
@@ -285,6 +435,19 @@
 				</div>
 			</footer>
 			<!-- End of Footer -->
+			<?php endif; ?>
+
+			<?php if (is_admin() or is_pimpinan() or is_gudang()) :?>
+			<!-- Footer -->
+			<footer class="sticky-footer bg-light">			
+				<div class="container my-auto">
+					<div class="copyright text-center my-auto">
+						<span>Copyright &copy; Aplikasi Pengadaan Barang 2023 &bull; by <?= anchor('https://www.linkedin.com/in/tri-w-71aa9388/', 'Tri.Wahyuni'); ?>
+					</div>
+				</div>
+			</footer>
+			<!-- End of Footer -->
+			<?php endif; ?>
 
 		</div>
 		<!-- End of Content Wrapper -->

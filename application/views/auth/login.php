@@ -12,7 +12,7 @@
 					<div class="col-lg-6">
 						<div class="p-5">
 							<div class="text-center mb-4">
-								<h3>dkahiuh</h3>
+								
 								<h1 class="h4 text-gray-900">Pengadaan Perlengkapan RS Harapan Keluarga</h1>
 								<span class="text-muted">Login</span>
 							</div>

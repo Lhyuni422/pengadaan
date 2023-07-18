@@ -92,6 +92,76 @@ class Admin_model extends CI_Model
         return $this->db->get('barang_keluar bk')->result_array();
     }
 
+    public function getPengajuan($limit = null, $id_pengajuan = null, $range = null)
+    {
+        $this->db->select('*');
+        $this->db->join('user u', 'p.user_id = u.id_user');        
+        $this->db->join('barang b', 'p.barang_id = b.id_barang');
+        $this->db->join('satuan s', 'b.satuan_id = s.id_satuan');        
+        if ($limit != null) {
+            $this->db->limit($limit);
+        }
+
+        if ($id_pengajuan != null) {
+            $this->db->where('id_pengajuan', $id_pengajuan);
+        }
+
+        if ($range != null) {
+            $this->db->where('tgl_pengajuan' . ' >=', $range['mulai']);
+            $this->db->where('tgl_pengajuan' . ' <=', $range['akhir']);
+        }
+
+        $this->db->order_by('id_pengajuan', 'DESC');
+        return $this->db->get('pengajuan p')->result_array();
+    }
+
+    public function getPermintaan($limit = null, $id_req = null, $range = null)
+    {
+        $this->db->select('*');
+        $this->db->join('user u', 'r.user_id = u.id_user');        
+        $this->db->join('barang b', 'r.barang_id = b.id_barang');
+        $this->db->join('satuan s', 'b.satuan_id = s.id_satuan');        
+        if ($limit != null) {
+            $this->db->limit($limit);
+        }
+
+        if ($id_req != null) {
+            $this->db->where('id_req', $id_req);
+        }
+
+        if ($range != null) {
+            $this->db->where('tgl_req' . ' >=', $range['mulai']);
+            $this->db->where('tgl_req' . ' <=', $range['akhir']);
+        }
+
+        $this->db->order_by('id_req', 'DESC');
+        return $this->db->get('permintaan r')->result_array();
+    }
+
+    public function getPermintaan_Temp($limit = null, $id_req_temp = null, $range = null)
+    {
+        $this->db->select('*');
+        $this->db->join('user u', 'rt.user_id = u.id_user');        
+        $this->db->join('barang b', 'rt.barang_id = b.id_barang');
+        $this->db->join('satuan s', 'b.satuan_id = s.id_satuan');        
+        if ($limit != null) {
+            $this->db->limit($limit);
+        }
+
+        if ($id_req_temp != null) {
+            $this->db->where('id_req_temp', $id_req_temp);
+        }
+
+        if ($range != null) {
+            $this->db->where('tgl_req' . ' >=', $range['mulai']);
+            $this->db->where('tgl_req' . ' <=', $range['akhir']);
+        }
+
+        $this->db->order_by('id_req_temp', 'DESC');
+        return $this->db->get('permintaan_temp rt')->result_array();
+    }
+    
+
     public function getMax($table, $field, $kode = null)
     {
         $this->db->select_max($field);
