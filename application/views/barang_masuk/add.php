@@ -61,7 +61,7 @@
                             <select name="barang_id" id="barang_id" class="custom-select">
                                 <option value="" selected disabled>Pilih Barang</option>
                                 <?php foreach ($barang as $b) : ?>
-                                    <option <?= $this->uri->segment(3) == $b['id_barang'] ? 'selected' : '';  ?> <?= set_select('barang_id', $b['id_barang']) ?> value="<?= $b['id_barang'] ?>"><?= $b['id_barang'] . ' | ' . $b['nama_barang'] ?></option>
+                                    <option <?= $this->uri->segment(3) == $b['id_barang'] ? 'selected' : '';  ?> <?= set_select('barang_id', $b['id_barang']) ?> value="<?= $b['id_barang'] ?>"><?= $b['nama_barang'] ?></option>
                                 <?php endforeach; ?>
                             </select>
                             <div class="input-group-append">

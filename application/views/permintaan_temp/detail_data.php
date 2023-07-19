@@ -4,8 +4,8 @@
         <div class="row">
             <div class="col">
                 <h4 class="h5 align-middle m-0 font-weight-bold text-primary">
-                    Data Permintaan Barang Tanggal                
-                </h4>
+                    Data Permintaan Barang Tanggal 
+                    </h4>
             </div>
             <div class="col-auto">
                         <a href="<?= base_url('permintaan_temp') ?>" class="btn btn-sm btn-secondary btn-icon-split">

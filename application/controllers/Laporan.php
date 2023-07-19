@@ -43,7 +43,7 @@ class Laporan extends CI_Controller
     {
         $this->load->library('CustomPDF');
         $table = $table_ == 'barang_masuk' ? 'Barang Masuk' : 'Barang Keluar';
-
+        
         $pdf = new FPDF();
         $pdf->AddPage('P', 'Letter');
         $pdf->SetFont('Times', 'B', 16);
@@ -94,6 +94,6 @@ class Laporan extends CI_Controller
         endif;
 
         $file_name = $table . ' ' . $tanggal;
-        $pdf->Output('I', $file_name);
+        $pdf->Output('D', 'report.pdf');
     }
 }

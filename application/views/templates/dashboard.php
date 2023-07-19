@@ -414,7 +414,6 @@
 
 					<!-- Page Heading -->
 					
-
 					<?= $contents; ?>
 
 				</div>
@@ -422,20 +421,6 @@
 			
 			</div>
 			<!-- End of Main Content -->
-
-			<?php if (is_unit()) :?>
-			<!-- Footer -->
-			<footer class="sticky-footer bg-light">
-			<marquee hspace="40" width="full-width">Setelah permintaan dikonfirmasi oleh Admin/Petugas Gudang, Unit yang bersangkutan harap segera langsung mengambil barang ke bagian Gudang.</marquee>
-  			<br></br>
-				<div class="container my-auto">
-					<div class="copyright text-center my-auto">
-						<span>Copyright &copy; Aplikasi Pengadaan Barang 2023 &bull; by <?= anchor('https://www.linkedin.com/in/tri-w-71aa9388/', 'Tri.Wahyuni'); ?>
-					</div>
-				</div>
-			</footer>
-			<!-- End of Footer -->
-			<?php endif; ?>
 
 			<?php if (is_admin() or is_pimpinan() or is_gudang()) :?>
 			<!-- Footer -->
@@ -448,9 +433,25 @@
 			</footer>
 			<!-- End of Footer -->
 			<?php endif; ?>
-
+			
 		</div>
 		<!-- End of Content Wrapper -->
+
+		<?php if (is_unit()) :?>
+			<!-- Footer -->
+			
+			<!-- <footer class="sticky-footer bg-light">
+			<marquee hspace="40" width="full-width">Setelah permintaan dikonfirmasi oleh Admin/Petugas Gudang, Unit yang bersangkutan harap segera langsung mengambil barang ke bagian Gudang.</marquee>
+  			<br></br>
+				<div class="container my-auto">
+					<div class="copyright text-center my-auto">
+						<span>Copyright &copy; Aplikasi Pengadaan Barang 2023 &bull; by <?= anchor('https://www.linkedin.com/in/tri-w-71aa9388/', 'Tri.Wahyuni'); ?>
+					</div>
+				</div>
+			</footer> -->
+			<!-- End of Footer -->
+			<?php endif; ?>
+
 
 	</div>
 	<!-- End of Page Wrapper -->

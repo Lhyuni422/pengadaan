@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col">
                 <h4 class="h5 align-middle m-0 font-weight-bold text-primary">
-                    Riwayat Permintaan Barang
+                    Riwayat Permintaan Barang <?php echo tgl_req($tgl); ?>
                 </h4>
             </div>            
         </div>

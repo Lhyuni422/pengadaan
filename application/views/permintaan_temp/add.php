@@ -25,14 +25,12 @@
                 <?= $this->session->flashdata('pesan'); ?>
                 <?= form_open('', [], ['id_req_temp' => $id_req_temp, 'user_id' => $this->session->userdata('login_session')['user']]); ?>
                 <div class="row form-group">
-                    <label class="col-md-4 text-md-right" for="id_req_temp">ID Transaksi Permintaan Barang</label>
+                    <label class="col-mxd-4 text-md-right" for="id_req_temp">ID Transaksi Permintaan Barang</label>
                     <div class="col-md-5">
                         <input value="<?= $id_req_temp; ?>" type="text" readonly="readonly" class="form-control">
                         <?= form_error('id_req_temp', '<small class="text-danger">', '</small>'); ?>
                     </div>
-                </div>
-
-                
+                </div>             
                 
                 <div class="row form-group">
                     <label class="col-md-4 text-md-right" for="tgl_req">Tgl Permintaan</label>
@@ -41,20 +39,32 @@
                         <?= form_error('tgl_req', '<small class="text-danger">', '</small>'); ?>
                     </div>
                 </div>
+
+                <div class="row form-group">
+                    <label class="col-md-4 text-md-right" for="jenis_id">Jenis Barang</label>
+                    <div class="col-md-7">
+                        <div class="input-group">
+                            <select name="jenis_id" id="jenis_id" class="custom-select">
+                                <option value="" selected disabled>Pilih Jenis</option>
+                                <?php foreach ($jenis as $j) : ?>
+                                    <option <?= $this->uri->segment(3) == $j['id_jenis'] ? 'selected' : '';  ?> <?= set_select('jenis_id', $j['id_jenis']) ?> value="<?= $j['id_jenis'] ?>"><?= $j['id_jenis'] . ' | ' . $j['nama_jenis'] ?></option>
+                                <?php endforeach; ?>
+                            </select>                            
+                        </div>
+                        <?= form_error('jenis_id', '<small class="text-danger">', '</small>'); ?>
+                    </div>
+                </div>
                
                 <div class="row form-group">
                     <label class="col-md-4 text-md-right" for="barang_id">Barang</label>
-                    <div class="col-md-8">
+                    <div class="col-md-7">
                         <div class="input-group">
                             <select name="barang_id" id="barang_id" class="custom-select">
                                 <option value="" selected disabled>Pilih Barang</option>
                                 <?php foreach ($barang as $b) : ?>
                                     <option <?= $this->uri->segment(3) == $b['id_barang'] ? 'selected' : '';  ?> <?= set_select('barang_id', $b['id_barang']) ?> value="<?= $b['id_barang'] ?>"><?= $b['id_barang'] . ' | ' . $b['nama_barang'] ?></option>
                                 <?php endforeach; ?>
-                            </select>
-                            <div class="input-group-append">
-                                <a class="btn btn-primary" href="<?= base_url('permintaan_temp/add'); ?>"><i class="fa fa-plus"></i></a>
-                            </div>
+                            </select>                            
                         </div>
                         <?= form_error('barang_id', '<small class="text-danger">', '</small>'); ?>
                     </div>
@@ -98,7 +108,7 @@
             </div>
 
             <div class="table-responsive">
-        <table class="table table-striped w-100 dt-responsive nowrap" id="dataTable">
+        <table class="table table-striped w-100 dt-responsive nowrap" id="">
             <thead>
                 <tr>
                     <th>No. </th>                                       
@@ -117,7 +127,6 @@
                             <td><?= $no++; ?></td>                            
                             <td><?= $rt['nama_barang']; ?></td>
                             <td><?= $rt['jumlah'] . ' ' . $rt['nama_satuan']; ?></td>
-                            <td><?= $rt['aksi']; ?></td>
                             <td>
                                 <a onclick="return confirm('Yakin ingin hapus?')" href="<?= base_url('permintaan_temp/delete/') . $rt['id_req_temp'] ?>" class="btn btn-danger btn-circle btn-sm"><i class="fa fa-trash"></i></a>
                             </td>
@@ -134,7 +143,7 @@
         </table>               
                 <div class="row form-group">
                     <div class="col offset-md-1">
-                        <button type="submit" class="btn btn-primary">Tambah</button>                        
+                        <button type="submit" class="btn btn-primary">Buat Permintaan</button>                        
                     </div>
                 </div>
     </div>

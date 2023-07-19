@@ -23,15 +23,19 @@ class Permintaan_Temp extends CI_Controller
     {
         $this->form_validation->set_rules('tgl_req', 'Tgl Permintaan', 'required|trim');
         $this->form_validation->set_rules('barang_id', 'Barang', 'required');
+        $this->form_validation->set_rules('jenis_id', 'Jenis', 'required');
         $this->form_validation->set_rules('jumlah', 'Jumlah', 'required|trim|numeric|greater_than[0]');
     }
 
     public function add()
     {
+        // echo "<h2>kdawawkaw</h2>";
         $this->_validasi();
         if ($this->form_validation->run() == false) {
             $data['title'] = "Permintaan Barang";
             $data['barang'] = $this->admin->get('barang');
+            $data['jenis'] = $this->admin->get('jenis');
+            $data['permintaan_temp'] = $this->admin->getpermintaan_temp();
 
             // Mendapatkan dan men-generate kode transaksi pengajuan
             $kode = 'T-REQT-' . date('ymd');
@@ -43,6 +47,7 @@ class Permintaan_Temp extends CI_Controller
 
             $this->template->load('templates/dashboard', 'permintaan_temp/add', $data);
         } else {
+            // echo "<h2>dwdwdw</h2>";
             $input = $this->input->post(null, true);
             $insert = $this->admin->insert('permintaan_temp', $input);
 
@@ -58,10 +63,9 @@ class Permintaan_Temp extends CI_Controller
 
     public function detail_data()
     {
-        $data['title'] = "Detail Data";
-        $data['barang'] = $this->admin->getBarang();
+        $data['title'] = "Permintaan Barang";
+        $data['permintaan_temp'] = $this->admin->getpermintaan_temp();
         $this->template->load('templates/dashboard', 'permintaan_temp/detail_data', $data);
-     
     }
 
     public function delete($getId)
