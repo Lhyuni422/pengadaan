@@ -140,13 +140,26 @@
                     </tr>
                 <?php endif; ?>
             </tbody>            
-        </table>               
-                <div class="row form-group">
-                    <div class="col offset-md-1">
-                        <button type="submit" class="btn btn-primary">Buat Permintaan</button>                        
-                    </div>
-                </div>
+        </table>
     </div>
+    <?= form_open('permintaan_temp/add_permintaan', [], ['user_id' => $this->session->userdata('login_session')['user']]); ?>
+            <?php
+                // var_dump($permintaan_temp[0]['nama_barang']);
+                for ($x = 0; $x < count($permintaan_temp); $x++) :
+                    // print $permintaan_temp[$x]['nama_barang'];
+            ?>
+            <input type="hidden" value="<?= $permintaan_temp[$x]['id_req_temp']  ?>" name="id_req[]">
+            <input type="hidden" value="<?= $permintaan_temp[$x]['barang_id']  ?>" name="barang_id[]">
+            <input type="hidden" value="<?= $permintaan_temp[$x]['jumlah']  ?>" name="jumlah[]">
+            <input type="hidden" value="<?= $permintaan_temp[$x]['user_id']  ?>" name="user_id[]">
+            <input type="hidden" value="<?= $permintaan_temp[$x]['tgl_req']  ?>" name="tgl_req[]">
+            <?php endfor; ?>
+            <div class="row form-group">
+                <div class="col offset-md-1">
+                    <button type="submit" class="btn btn-primary">Buat Permintaan</button>                        
+                </div>
+            </div>
+        <?= form_close(); ?>
            
     </div> 
 </div>       

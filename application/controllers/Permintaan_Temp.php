@@ -29,7 +29,6 @@ class Permintaan_Temp extends CI_Controller
 
     public function add()
     {
-        // echo "<h2>kdawawkaw</h2>";
         $this->_validasi();
         if ($this->form_validation->run() == false) {
             $data['title'] = "Permintaan Barang";
@@ -53,12 +52,52 @@ class Permintaan_Temp extends CI_Controller
 
             if ($insert) {
                 set_pesan('data berhasil disimpan.');
-                redirect('permintaan_temp');
+                redirect('permintaan_temp/add');
             } else {
                 set_pesan('Opps ada kesalahan!');
                 redirect('permintaan_temp/add');
             }
         }
+    }
+
+    public function add_permintaan(){
+        $data['permintaan_temp'] = $this->admin->getpermintaan_temp();
+        // print_r( count($data['permintaan_temp']));
+        for ($x = 0; $x < count($data['permintaan_temp']); $x++) {
+            // print_r($data['permintaan_temp'][$x]['user_id']);
+            $data01 = [
+                'id_req'    => $data['permintaan_temp'][$x]['id_req_temp'],
+                'barang_id' => $data['permintaan_temp'][$x]['barang_id'],
+                'jumlah'    => $data['permintaan_temp'][$x]['jumlah'],
+                'user_id'   => $data['permintaan_temp'][$x]['user_id'],
+                'tgl_req'   => $data['permintaan_temp'][$x]['tgl_req']
+            ];
+            $insert = $this->admin->insert('permintaan', $data01);
+        }
+
+        if ($insert) {
+            set_pesan('data berhasil disimpan.');
+            redirect('permintaan_temp/add');
+        } else {
+            set_pesan('Opps ada kesalahan!');
+            redirect('permintaan_temp/add');
+        }
+
+        // $input = $this->input->post(null, true);
+        // print_r($input['user_id'][0]);
+        // echo count($input);
+        // for ($x = 0; $x < count($input); $x++) {
+            // print_r($input['user_id'][$x][0][0][0][0]);
+        // }
+        // for ($x = 0; $x < count($input); $x++) {
+        //     print_r($input);
+        // }
+        // echo "=======================================";
+        // print_r($input['user_id']);
+        // echo "=======================================";
+        // foreach ($input as $item) {
+        //     print_r($input['barang_id']);
+        // }
     }
 
     public function detail_data()
