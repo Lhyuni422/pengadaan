@@ -73,6 +73,13 @@ class Permintaan_Temp extends CI_Controller
                 'tgl_req'   => $data['permintaan_temp'][$x]['tgl_req']
             ];
             $insert = $this->admin->insert('permintaan', $data01);
+
+            // print_r($data01['id_req']);
+            $delete = $this->admin->delete('permintaan_temp', 'id_req_temp', $data01['id_req']);
+
+            // $delete = $this->admin->delete('permintaan_temp', 'id_req_temp', $data01 = [
+            //     'id_req_temp' => $data['permintaan_temp'][$x]['id_req_temp'],
+            // ]);
         }
 
         if ($insert) {
